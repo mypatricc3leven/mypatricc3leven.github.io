@@ -84,3 +84,38 @@ button:hover{
     transform:scale(1.1);
     box-shadow:0 0 50px #00e5ff;
 }
+.planet-page{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+    z-index:2;
+}
+
+.planet{
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    background:radial-gradient(circle at 30% 30%,#67e8f9,#2563eb,#020617);
+    box-shadow:
+    0 0 40px #00e5ff,
+    0 0 100px #2563eb;
+    animation:rotatePlanet 8s linear infinite;
+    margin-bottom:40px;
+}
+
+@keyframes rotatePlanet{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.planet-page h1{
+    font-size:50px;
+}
