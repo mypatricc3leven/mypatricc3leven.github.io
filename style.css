@@ -161,3 +161,15 @@ button:hover{
         rgba(0,229,255,0.5) 18px 21px
     );
         }
+.city-bg{
+    animation:cityMove 10s linear infinite;
+}
+
+@keyframes cityMove{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(-80px);
+    }
+}
