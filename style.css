@@ -325,3 +325,31 @@ button:hover{
         transform:rotate(360deg);
     }
 }
+.energy-core{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+    z-index:2;
+}
+
+.energy-ball{
+    width:160px;
+    height:160px;
+    border-radius:50%;
+    background:radial-gradient(circle,#fff,#facc15,#f97316,#020617);
+    box-shadow:
+    0 0 40px #facc15,
+    0 0 100px #f97316;
+    animation:energyPulse 2s infinite;
+    margin-bottom:40px;
+}
+
+@keyframes energyPulse{
+    50%{
+        transform:scale(1.15);
+    }
+    }
