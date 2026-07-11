@@ -277,3 +277,34 @@ button:hover{
         transform:translateY(-30px);
     }
             }
+.ai-core{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+    z-index:2;
+}
+
+.core-circle{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:radial-gradient(circle,#ffffff,#00e5ff,#020617);
+    box-shadow:
+    0 0 40px #00e5ff,
+    0 0 100px #00e5ff;
+    animation:corePulse 2s infinite;
+    margin-bottom:40px;
+}
+
+@keyframes corePulse{
+    50%{
+        transform:scale(1.1);
+        box-shadow:
+        0 0 80px #00e5ff,
+        0 0 140px #00e5ff;
+    }
+}
