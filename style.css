@@ -308,3 +308,20 @@ button:hover{
         0 0 140px #00e5ff;
     }
 }
+.orbit{
+    position:absolute;
+    width:320px;
+    height:320px;
+    border:2px solid rgba(0,229,255,.5);
+    border-radius:50%;
+    animation:orbitMove 10s linear infinite;
+}
+
+@keyframes orbitMove{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
