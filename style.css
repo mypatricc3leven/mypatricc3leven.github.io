@@ -200,3 +200,55 @@ button:hover{
     width:90px;
     height:160px;
 }
+.building{
+    position:relative;
+    overflow:hidden;
+}
+
+.building::after{
+    content:"";
+    position:absolute;
+    top:15px;
+    left:10px;
+    width:8px;
+    height:8px;
+    background:#00e5ff;
+    box-shadow:
+    20px 30px #00e5ff,
+    5px 70px #00e5ff,
+    30px 100px #00e5ff,
+    15px 140px #00e5ff;
+}
+
+.cars{
+    position:fixed;
+    top:35%;
+    width:100%;
+    z-index:2;
+}
+
+.car{
+    width:70px;
+    height:25px;
+    background:#00e5ff;
+    border-radius:20px;
+    box-shadow:
+    0 0 20px #00e5ff,
+    0 0 40px #00e5ff;
+    position:absolute;
+    animation:fly 8s linear infinite;
+}
+
+.car2{
+    top:80px;
+    animation-duration:12s;
+}
+
+@keyframes fly{
+    from{
+        left:-100px;
+    }
+    to{
+        left:110%;
+    }
+}
