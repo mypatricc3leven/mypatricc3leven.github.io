@@ -252,3 +252,28 @@ button:hover{
         left:110%;
     }
 }
+.space-port{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+    z-index:2;
+}
+
+.rocket{
+    font-size:120px;
+    animation:rocketMove 3s ease-in-out infinite;
+    filter:drop-shadow(0 0 25px #00e5ff);
+}
+
+@keyframes rocketMove{
+    0%,100%{
+        transform:translateY(20px);
+    }
+    50%{
+        transform:translateY(-30px);
+    }
+            }
