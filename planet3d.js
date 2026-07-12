@@ -58,3 +58,38 @@ function animate() {
 }
 
 animate();
+// ===== Planet Eleven 3D - Part 2 =====
+
+// Yulduzlar
+const starGeometry = new THREE.BufferGeometry();
+
+const starCount = 2000;
+const starVertices = [];
+
+for (let i = 0; i < starCount; i++) {
+
+    starVertices.push(
+        (Math.random() - 0.5) * 300,
+        (Math.random() - 0.5) * 300,
+        (Math.random() - 0.5) * 300
+    );
+
+}
+
+starGeometry.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute(starVertices, 3)
+);
+
+const starMaterial = new THREE.PointsMaterial({
+    color: 0xffffff,
+    size: 0.7
+});
+
+const stars = new THREE.Points(starGeometry, starMaterial);
+
+scene.add(stars);
+
+// Sayyora nuri
+planet.material.emissive = new THREE.Color(0x003366);
+planet.material.emissiveIntensity = 0.5;
