@@ -153,3 +153,65 @@ ringMaterial
 orbitRing.rotation.x = Math.PI / 2;
 
 scene.add(orbitRing);
+// ===============================
+// PART 3 - ANIMATION & CONTROLS
+// ===============================
+
+// Drag Control
+let isDragging = false;
+let previousX = 0;
+
+renderer.domElement.addEventListener("pointerdown", (e) => {
+    isDragging = true;
+    previousX = e.clientX;
+});
+
+window.addEventListener("pointerup", () => {
+    isDragging = false;
+});
+
+window.addEventListener("pointermove", (e) => {
+    if (!isDragging) return;
+
+    const delta = e.clientX - previousX;
+
+    planet.rotation.y += delta * 0.01;
+    atmosphere.rotation.y += delta * 0.01;
+
+    previousX = e.clientX;
+});
+
+// Responsive
+window.addEventListener("resize", () => {
+
+    camera.aspect =
+        container.clientWidth /
+        container.clientHeight;
+
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(
+        container.clientWidth,
+        container.clientHeight
+    );
+
+});
+
+// Animation
+function animate() {
+
+    requestAnimationFrame(animate);
+
+    planet.rotation.y += 0.0025;
+    atmosphere.rotation.y += 0.003;
+
+    stars.rotation.y += 0.0002;
+    stars.rotation.x += 0.00005;
+
+    orbitRing.rotation.z += 0.0015;
+
+    renderer.render(scene, camera);
+
+}
+
+animate();
