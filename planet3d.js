@@ -34,7 +34,23 @@ const material = new THREE.MeshStandardMaterial({
 const planet = new THREE.Mesh(geometry, material);
 
 scene.add(planet);
+// Atmosfera
 
+const atmosphereGeometry = new THREE.SphereGeometry(2.15, 64, 64);
+
+const atmosphereMaterial = new THREE.MeshBasicMaterial({
+    color: 0x66ccff,
+    transparent: true,
+    opacity: 0.18,
+    side: THREE.BackSide
+});
+
+const atmosphere = new THREE.Mesh(
+    atmosphereGeometry,
+    atmosphereMaterial
+);
+
+scene.add(atmosphere);
 // Yorug'lik
 const light = new THREE.PointLight(0xffffff, 5);
 
