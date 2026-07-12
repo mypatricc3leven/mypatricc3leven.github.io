@@ -459,3 +459,28 @@ button:hover{
 #startScreen p{
     color:white;
 }
+.terminal{
+    max-width:700px;
+    margin:80px auto;
+    padding:20px;
+    color:#00ff88;
+    font-family:monospace;
+}
+
+#output{
+    background:#000;
+    padding:20px;
+    min-height:250px;
+    border:2px solid #00ff88;
+    overflow:auto;
+}
+
+#command{
+    width:100%;
+    padding:15px;
+    margin-top:15px;
+    background:#111;
+    color:#00ff88;
+    border:2px solid #00ff88;
+    font-size:18px;
+}
