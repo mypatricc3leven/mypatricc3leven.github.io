@@ -69,7 +69,7 @@ requestAnimationFrame(animate);
 
     // Sayyora aylanishi
     planet.rotation.y += 0.003;
-
+    atmosphere.rotation.y += 0.0035;
     // Yulduzlar sekin aylanishi
     stars.rotation.y += 0.0003;
     stars.rotation.x += 0.0001;
