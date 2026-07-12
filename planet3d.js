@@ -49,9 +49,14 @@ camera.position.z = 5;
 
 function animate() {
 
-    requestAnimationFrame(animate);
+requestAnimationFrame(animate);
 
+    // Sayyora aylanishi
     planet.rotation.y += 0.003;
+
+    // Yulduzlar sekin aylanishi
+    stars.rotation.y += 0.0003;
+    stars.rotation.x += 0.0001;
 
     renderer.render(scene, camera);
 
