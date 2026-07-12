@@ -43,4 +43,18 @@ light.position.set(5, 5, 5);
 scene.add(light);
 
 // Muhit yorug'ligi
-scene.add(new THREE.A
+scene.add(new THREE.AmbientLight(0x404040, 3));
+
+camera.position.z = 5;
+
+function animate() {
+
+    requestAnimationFrame(animate);
+
+    planet.rotation.y += 0.003;
+
+    renderer.render(scene, camera);
+
+}
+
+animate();
