@@ -1,140 +1,76 @@
-// ===== Planet Eleven 3D - Part 1 =====
+// ===============================
+// PLANET ELEVEN 3D
+// PART 1
+// ===============================
 
-// Sahna
+// Scene
 const scene = new THREE.Scene();
+scene.background = null;
 
-// Kamera
+// Camera
 const camera = new THREE.PerspectiveCamera(
-    75,
-    300 / 300,
-    0.1,
-    1000
+70,
+window.innerWidth / window.innerHeight,
+0.1,
+1000
 );
-
-// Renderer
-const renderer = new THREE.WebGLRenderer({
-    antialias: true,
-    alpha: true
-});
-
-renderer.setSize(300, 300);
-
-// Renderer'ni sahifaga joylash
-document.getElementById("planet3d").appendChild(renderer.domElement);
-
-// Sayyora
-const geometry = new THREE.SphereGeometry(2, 64, 64);
-
-const material = new THREE.MeshStandardMaterial({
-    color: 0x1e90ff,
-    roughness: 0.8,
-    metalness: 0.2
-});
-
-const planet = new THREE.Mesh(geometry, material);
-
-scene.add(planet);
-// Atmosfera
-
-const atmosphereGeometry = new THREE.SphereGeometry(2.15, 64, 64);
-
-const atmosphereMaterial = new THREE.MeshBasicMaterial({
-    color: 0x66ccff,
-    transparent: true,
-    opacity: 0.18,
-    side: THREE.BackSide
-});
-
-const atmosphere = new THREE.Mesh(
-    atmosphereGeometry,
-    atmosphereMaterial
-);
-
-scene.add(atmosphere);
-// Yorug'lik
-const light = new THREE.PointLight(0xffffff, 5);
-
-light.position.set(5, 5, 5);
-
-scene.add(light);
-
-// Muhit yorug'ligi
-scene.add(new THREE.AmbientLight(0x404040, 3));
 
 camera.position.z = 5;
 
-function animate() {
-
-requestAnimationFrame(animate);
-
-    // Sayyora aylanishi
-    planet.rotation.y += 0.003;
-    atmosphere.rotation.y += 0.0035;
-    // Yulduzlar sekin aylanishi
-    stars.rotation.y += 0.0003;
-    stars.rotation.x += 0.0001;
-
-    renderer.render(scene, camera);
-
-}
-
-animate();
-// ===== Touch / Mouse Control =====
-
-let isDragging = false;
-let previousX = 0;
-
-renderer.domElement.addEventListener("pointerdown", (e) => {
-    isDragging = true;
-    previousX = e.clientX;
+// Renderer
+const renderer = new THREE.WebGLRenderer({
+antialias:true,
+alpha:true
 });
 
-window.addEventListener("pointerup", () => {
-    isDragging = false;
-});
+renderer.setPixelRatio(window.devicePixelRatio);
 
-window.addEventListener("pointermove", (e) => {
-    if (!isDragging) return;
+const container=document.getElementById("planet3d");
 
-    const delta = e.clientX - previousX;
-
-    planet.rotation.y += delta * 0.01;
-    atmosphere.rotation.y += delta * 0.01;
-
-    previousX = e.clientX;
-});
-// ===== Planet Eleven 3D - Part 2 =====
-
-// Yulduzlar
-const starGeometry = new THREE.BufferGeometry();
-
-const starCount = 2000;
-const starVertices = [];
-
-for (let i = 0; i < starCount; i++) {
-
-    starVertices.push(
-        (Math.random() - 0.5) * 300,
-        (Math.random() - 0.5) * 300,
-        (Math.random() - 0.5) * 300
-    );
-
-}
-
-starGeometry.setAttribute(
-    "position",
-    new THREE.Float32BufferAttribute(starVertices, 3)
+renderer.setSize(
+container.clientWidth,
+container.clientHeight
 );
 
-const starMaterial = new THREE.PointsMaterial({
-    color: 0xffffff,
-    size: 0.7
+container.appendChild(renderer.domElement);
+
+// Lights
+const ambient=new THREE.AmbientLight(0xffffff,1.2);
+scene.add(ambient);
+
+const sun=new THREE.DirectionalLight(0xffffff,3);
+
+sun.position.set(5,3,5);
+
+scene.add(sun);
+
+// Planet
+const planetGeometry=new THREE.SphereGeometry(
+2,
+128,
+128
+);
+
+const planetMaterial=new THREE.MeshStandardMaterial({
+
+color:0x2b8cff,
+
+roughness:0.8,
+
+metalness:0.15,
+
+emissive:0x001133,
+
+emissiveIntensity:0.4
+
 });
 
-const stars = new THREE.Points(starGeometry, starMaterial);
+const planet=new THREE.Mesh(
+planetGeometry,
+planetMaterial
+);
 
-scene.add(stars);
+scene.add(planet);
 
-// Sayyora nuri
-planet.material.emissive = new THREE.Color(0x003366);
-planet.material.emissiveIntensity = 0.5;
+// Atmosphere
+const atmosphere
