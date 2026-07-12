@@ -74,3 +74,82 @@ scene.add(planet);
 
 // Atmosphere
 const atmosphere
+// ===============================
+// PART 2 - STARS
+// ===============================
+
+const starGeometry = new THREE.BufferGeometry();
+
+const starVertices = [];
+
+for (let i = 0; i < 5000; i++) {
+
+    starVertices.push(
+        (Math.random() - 0.5) * 800,
+        (Math.random() - 0.5) * 800,
+        (Math.random() - 0.5) * 800
+    );
+
+}
+
+starGeometry.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute(
+        starVertices,
+        3
+    )
+);
+
+const starMaterial = new THREE.PointsMaterial({
+
+    color:0xffffff,
+
+    size:0.6
+
+});
+
+const stars = new THREE.Points(
+
+    starGeometry,
+
+    starMaterial
+
+);
+
+scene.add(stars);
+
+// Orbit Ring
+
+const ringGeometry = new THREE.TorusGeometry(
+
+2.8,
+
+0.02,
+
+16,
+
+200
+
+);
+
+const ringMaterial = new THREE.MeshBasicMaterial({
+
+color:0x66ccff,
+
+transparent:true,
+
+opacity:0.35
+
+});
+
+const orbitRing = new THREE.Mesh(
+
+ringGeometry,
+
+ringMaterial
+
+);
+
+orbitRing.rotation.x = Math.PI / 2;
+
+scene.add(orbitRing);
