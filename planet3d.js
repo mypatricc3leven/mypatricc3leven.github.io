@@ -79,6 +79,30 @@ requestAnimationFrame(animate);
 }
 
 animate();
+// ===== Touch / Mouse Control =====
+
+let isDragging = false;
+let previousX = 0;
+
+renderer.domElement.addEventListener("pointerdown", (e) => {
+    isDragging = true;
+    previousX = e.clientX;
+});
+
+window.addEventListener("pointerup", () => {
+    isDragging = false;
+});
+
+window.addEventListener("pointermove", (e) => {
+    if (!isDragging) return;
+
+    const delta = e.clientX - previousX;
+
+    planet.rotation.y += delta * 0.01;
+    atmosphere.rotation.y += delta * 0.01;
+
+    previousX = e.clientX;
+});
 // ===== Planet Eleven 3D - Part 2 =====
 
 // Yulduzlar
